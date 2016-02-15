@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Welcome to the Flask app<h2>
+    <h3>This is the home page for the Flask app<h3>
+
+    <p>
+      <button onclick="geoFindMe()">Show my location</button>
+    </p>
+    <div id="out"></div>
+    <p>
+      <button><a href = "{{url_for('weather')}}">Weather</a></button>
+    </p>
+    <div addEventListener="load"></div>
+  </div>
+{% endblock %}
