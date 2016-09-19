@@ -1,7 +1,6 @@
 import pyowm
 from flask import Flask, request, jsonify, render_template
 
-
 app = Flask(__name__)
 
 owm = pyowm.OWM('f7d3136786b15c2e1a3fb486b5df296a')
@@ -20,7 +19,8 @@ def weather():
     latitude = float(request.args.get('lat', [-33.871])[0])
     observation = owm.weather_at_coords(longitude, latitude)
     results = observation.get_weather()
-    return jsonify(results.get_temperature('celsius'))
+    temperatures = results.get_temperature('celsius')
+    return render_template('weather.html', temp=temperatures)
 
 if __name__ == '__main__':
   app.run(debug=True)
